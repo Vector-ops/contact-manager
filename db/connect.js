@@ -12,9 +12,9 @@ mongoose.connection.on("connected", () => {
   );
 });
 
-// mongoose.connnection.on("error", (err) => {
-//   console.error(err);
-// });
+mongoose.connection.on("error", (err) => {
+  console.error({ err });
+});
 
 mongoose.connection.on("disconnected", () => {
   console.log("DB disconnected..");
