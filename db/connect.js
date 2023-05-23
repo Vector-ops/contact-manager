@@ -5,7 +5,11 @@ const connectDB = (url, DBName) => {
 };
 
 mongoose.connection.on("connected", () => {
-  console.log("Connected to DB...");
+  console.log(
+    "Connected to DB:",
+    mongoose.connection.host,
+    mongoose.connection.name
+  );
 });
 
 // mongoose.connnection.on("error", (err) => {
