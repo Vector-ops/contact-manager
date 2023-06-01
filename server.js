@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config();
 
 const contactRoute = require("./routes/contact.route");
+const userRoute = require("./routes/user.route");
 const connectDB = require("./db/connect");
 const errorHandler = require("./middleware/errorHandler");
 
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use("/api/contacts", contactRoute);
+app.use("/api/user", userRoute);
 app.use(errorHandler);
 
 const startServer = async () => {
