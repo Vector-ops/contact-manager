@@ -7,6 +7,9 @@ const {
   deleteContacts,
   updateContact,
 } = require("../controllers/contact");
+const { verifyAccessToken } = require("../helpers/jwtHelper");
+
+router.use(verifyAccessToken);
 
 router.route("/").get(getAllContacts).post(createContact);
 
