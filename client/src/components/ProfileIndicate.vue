@@ -1,20 +1,22 @@
 <template>
-  <div class="profile-btn-container">
-    <font-awesome-icon
-      :icon="['fas', 'user']"
-      size="xl"
-      border
-      style="border-radius: 12px"
-    />
-    <div class="profile-label-container">
-      <p>
-        {{ profile.username }}
-      </p>
-      <p>
-        {{ profile.email }}
-      </p>
+  <router-link to="/profile" :style="linkStyle">
+    <div class="profile-btn-container">
+      <font-awesome-icon
+        :icon="['fas', 'user']"
+        size="xl"
+        border
+        style="border-radius: 12px"
+      />
+      <div class="profile-label-container">
+        <p>
+          {{ profile.username }}
+        </p>
+        <p>
+          {{ profile.email }}
+        </p>
+      </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -22,6 +24,11 @@ export default {
   name: "ProfileIndicate",
   props: {
     profile: Object,
+  },
+  data() {
+    return {
+      linkStyle: { "text-decoration": "none", color: "inherit" },
+    };
   },
 };
 </script>
