@@ -1,7 +1,7 @@
 <template>
   <div :style="toggleBorder ? borderStyle : ''">
     <font-awesome-icon :icon="['fas', icon]" :style="{ color: color }" />
-    <router-link style="text-decoration: none; color: inherit" :to="route">
+    <router-link :style="linkStyle" :to="route">
       {{ title }}
     </router-link>
   </div>
@@ -20,6 +20,7 @@ export default {
     return {
       route: "/" + this.title.toLowerCase(),
       borderStyle: { "border-bottom": "2px solid white" },
+      linkStyle: { "text-decoration": "none", color: "inherit" },
     };
   },
 };
