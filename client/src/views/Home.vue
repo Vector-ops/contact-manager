@@ -2,11 +2,7 @@
   <div class="container">
     <Navbar title="Contact Manager" :profile="profile" />
     <div class="body-container">
-      <Sidebar
-        @icon-click="iconClick"
-        :profileSelect="profileSelect"
-        :contactsSelect="contactsSelect"
-      />
+      <Sidebar />
       <router-view :totalMembers="100" />
     </div>
   </div>
@@ -19,7 +15,6 @@ import Contacts from "../components/Contacts.vue";
 
 export default {
   name: "Home",
-
   components: { Navbar, Sidebar, Contacts },
   data() {
     return {
@@ -34,19 +29,6 @@ export default {
   // fix issue: on reload sidebar component updates but route remains
   mounted() {
     this.$router.push("/contacts");
-  },
-  methods: {
-    iconClick(page) {
-      if (page === "Profile") {
-        this.profileSelect = true;
-        this.contactsSelect = false;
-        this.$router.push("/profile");
-      } else if (page === "Contacts") {
-        this.profileSelect = false;
-        this.contactsSelect = true;
-        this.$router.push("/contacts");
-      }
-    },
   },
 };
 </script>

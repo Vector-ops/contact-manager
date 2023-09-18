@@ -1,5 +1,5 @@
 <template>
-  <div @click="handleClick()" :style="toggleBorder ? borderStyle : ''">
+  <div :style="toggleBorder ? borderStyle : ''">
     <font-awesome-icon :icon="['fas', icon]" :style="{ color: color }" />
     <router-link style="text-decoration: none; color: inherit" :to="route">
       {{ title }}
@@ -19,15 +19,8 @@ export default {
   data() {
     return {
       route: "/" + this.title.toLowerCase(),
-      page: this.title,
       borderStyle: { "border-bottom": "2px solid white" },
     };
-  },
-  methods: {
-    handleClick() {
-      // this.$emit("sidebar-icon-click", this.page);
-      console.log("clicked");
-    },
   },
 };
 </script>

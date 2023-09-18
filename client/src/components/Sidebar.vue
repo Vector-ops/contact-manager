@@ -1,18 +1,16 @@
 <template>
   <div class="sidebar">
     <SidebarIcon
-      @sidebar-icon-click="iconClick"
       title="Profile"
       icon="user"
       color="#ffffff"
-      :toggleBorder="profileSelect"
+      :toggleBorder="profileBorder"
     />
     <SidebarIcon
-      @sidebar-icon-click="iconClick"
       title="Contacts"
       icon="address-book"
       color="#ffffff"
-      :toggleBorder="contactsSelect"
+      :toggleBorder="contactsBorder"
     />
   </div>
 </template>
@@ -23,19 +21,22 @@ import SidebarIcon from "./SidebarIcon.vue";
 export default {
   name: "Sidebar",
   components: { SidebarIcon },
-  props: {
-    profileSelect: Boolean,
-    contactsSelect: Boolean,
-  },
+  props: {},
   data() {
     return {
       profileBorder: false,
       contactsBorder: true,
     };
   },
-  methods: {
-    iconClick(page) {
-      this.$emit("icon-click", page);
+  watch: {
+    $route(to, from) {
+      if (to.name === "profile") {
+        this.profileBorder = true;
+        this.contactsBorder = false;
+      } else if (to.name === "contacts") {
+        this.profileBorder = false;
+        this.contactsBorder = true;
+      }
     },
   },
 };

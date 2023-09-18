@@ -1,6 +1,10 @@
 <template>
   <nav>
-    <div class="title">{{ title }}</div>
+    <div class="title">
+      <router-link to="/contacts" style="text-decoration: none; color: inherit">
+        {{ title }}
+      </router-link>
+    </div>
     <ProfileIndicate :profile="profile" />
   </nav>
 </template>
